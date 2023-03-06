@@ -4,6 +4,7 @@ int main() {
 
     int ctrl=1;
     int n;
+    int bool=1;
 
     do{
         scanf("%d", &n);
@@ -14,6 +15,7 @@ int main() {
                     square[i][j]=1;
                 }
             }
+
             for(int k=0;k<(n-1)/2;k++){
                 for(int i=ctrl;i<(n-ctrl);i++){
                     for(int j=ctrl;j<(n-ctrl);j++){
