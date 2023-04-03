@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
 struct Camiseta {
     char nome[50];
     char cor[10];
@@ -30,7 +29,6 @@ void sortTamanho (struct Camiseta *aluno, int N){
             }
         }
     }
-
 }
 void sortCor (struct Camiseta *aluno, int N){
     struct Camiseta temp;
@@ -43,7 +41,6 @@ void sortCor (struct Camiseta *aluno, int N){
             }
         }
     }
-
 }
 
 int main() {
