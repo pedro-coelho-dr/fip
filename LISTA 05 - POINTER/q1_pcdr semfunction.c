@@ -37,14 +37,14 @@ int main() {
             }
             printf("\n");
     }
-    if (n>1){
-        for(int i=0; i<n; i++){
-            free(matrix[i]);
-        }
-        free(matrix);
-    }else{
-        free(matrix[0]);
-    }
-    }
+   // if (n>1){
+   //     for(int i=0; i<n; i++){
+   //         free(matrix[i]);
+   //     }
+    //    free(matrix);
+   // }else{
+   //     free(matrix[0]);
+   // }
+   }
     return 0;
 }
