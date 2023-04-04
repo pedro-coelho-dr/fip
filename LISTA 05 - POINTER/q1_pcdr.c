@@ -32,7 +32,7 @@ int main() {
     int n, m;
     while (scanf("%d %d",&n, &m)!=EOF){
         int **matrix = (int **)malloc(n*sizeof(int*));
-        for(int i=0;i<m;i++){
+        for(int i=0;i<n;i++){
             matrix[i] = (int *)malloc(m*sizeof(int));
         }
     for (int i=0;i<n;i++){
@@ -41,14 +41,11 @@ int main() {
         }
     }
     sweeper(matrix,n,m);
-   // if (n>1){
-   //     for(int i=0; i<n; i++){
-  //          free(matrix[i]);
-  //      }
-  //      free(matrix);
-  //  }else{
-  //      free(matrix[0]);
-  //  }
+
+    for(int i=0; i<n; i++){
+        free(matrix[i]);
+    }
+    free(matrix);
     }
     return 0;
 }

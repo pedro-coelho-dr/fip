@@ -45,9 +45,9 @@ int main() {
             }
         printf("%s\n", item[count-1]);
         
- //      for (int m=0;m<count;m++){
- //           free(item[m]);
- //       }
+       for (int m=0;m<(count-1);m++){
+            free(item[m]);
+        }
     }
     return 0;
 }
