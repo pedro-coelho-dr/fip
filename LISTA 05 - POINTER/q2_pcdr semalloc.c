@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 int main() {
     int n, count;
     char input[21000];

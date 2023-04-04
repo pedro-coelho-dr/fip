@@ -6,7 +6,6 @@
 int main() {
     int n, count;
     char input[21000];
-    char **item;
 
     scanf("%d\n",&n);
     for (int i=0;i<n;i++){
@@ -21,7 +20,7 @@ int main() {
             j++;
         }
 
-        item = (char **)malloc(count*sizeof(char*));
+        char *item[count];
         char *palavra = strtok(input, " ");
         int k = 0;
         while (palavra!=NULL){
@@ -45,10 +44,10 @@ int main() {
                 }
             }
         printf("%s\n", item[count-1]);
-        }
-        for (int m=0;m<count;m++){
-            free(item[m]);
-        }
-
+        
+ //      for (int m=0;m<count;m++){
+ //           free(item[m]);
+ //       }
+    }
     return 0;
 }
