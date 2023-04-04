@@ -81,5 +81,7 @@ int main() {
     }
     }
     printf("\n");
+    free(lista1);
+    free(lista2);
     return 0;
 }
