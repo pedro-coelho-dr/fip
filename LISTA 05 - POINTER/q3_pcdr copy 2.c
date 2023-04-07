@@ -8,10 +8,10 @@ int main() {
     int current_len=0;
     char *lista1 = (char*) malloc(start_len*sizeof(char)); 
     char *lista2 = (char*) malloc(start_len*sizeof(char));
-    int count=1;
+    int count1=1;
     int i;
     int j;
-    char amigo[31];
+    char amigo[30];
 // lista 1
     i=0;
     while((ch = getchar()) != '\n'){
@@ -35,53 +35,55 @@ int main() {
         i++;
     }
     lista2[i]='\0';
-// count
+
+// count1
     j=0;
     while (lista1[j]!='\0'){
         if(lista1[j]==' '){
-            count++;
+            count1++;
         }
         j++;
     }
+
 // nome do amigo
     scanf("%s", amigo);
 // matrix das listas por palavra
-    char *matrix[count];
+    char *matrix[count1];
     char *palavra = strtok(lista1, " ");
     int k = 0;
-    matrix[k]=(char *)malloc(31*sizeof(char));
+    matrix[k]=(char *)malloc(30*sizeof(char));
     strcpy(matrix[k],palavra);
-    while (palavra!=NULL){
-        matrix[k]=(char *)malloc(31*sizeof(char));
-        strcpy(matrix[k++],palavra);
+    while (palavra!=NULL){;
+        matrix[k]=(char *)malloc(30*sizeof(char));
+        strcpy(matrix[k],palavra);
         palavra = strtok(NULL, " ");
     }
 // printar
     if (strcmp("nao",amigo)==0){
-        for (int i=0;i<count;i++){
+        for (int i=0;i<(count1);i++){
             printf("%s ", matrix[i]);
         }
         printf("%s",lista2);
     }else{
-        for(int i=0;i<count;i++){
+        for(int i=0;i<(count1);i++){
             if(strcmp(matrix[i],amigo)!=0){
                 
-                if (i==(count-1)){
+                if (i==(count1-1)){
                     printf("%s", matrix[i]);
                 }else{
                     printf("%s ", matrix[i]);
                 }
             }else if(strcmp(matrix[i],amigo)==0){
-                if (i==(count-1)){
+                if (i==(count1-1)){
                     printf("%s %s",lista2, matrix[i]);
                 }else{
                     printf("%s %s ",lista2, matrix[i]);
                 }
             }
-        }
+    }
     }
     printf("\n");
-    for (int m=0;m<count;m++){
+    for(int m=0;m<(count1);m++){
         free(matrix[m]);
     }
     free(lista1);

@@ -22,12 +22,11 @@ int main() {
         char *item[count];
         char *palavra = strtok(input, " ");
         int k = 0;
-        item[k]=(char *)malloc(21*sizeof(char));
-        strcpy(item[k],palavra);
+    //    item[k]=(char *)malloc(21*sizeof(char));
+    //    strcpy(item[k],palavra);
         while (palavra!=NULL){
-            k++;
             item[k]=(char *)malloc(21*sizeof(char));
-            strcpy(item[k],palavra);
+            strcpy(item[k++],palavra);
             palavra = strtok(NULL, " ");
         }
         char *temp;

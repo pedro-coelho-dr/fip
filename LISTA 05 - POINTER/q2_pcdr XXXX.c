@@ -11,7 +11,7 @@ int main() {
     for (int i=0;i<n;i++){
         fgets(input, 21000, stdin);
         input[strcspn(input, "\n")] = 0;
-        count=1;
+        count=0;
         int j=0;
         while (input[j]!='\n'){
             if(input[j]==' '){
@@ -19,24 +19,24 @@ int main() {
             }
             j++;
         }
-        char *item[count];
+        char **item = (char **)malloc(count*sizeof(char*));
         char *palavra = strtok(input, " ");
         int k = 0;
-        item[k]=(char *)malloc(21*sizeof(char));
-        strcpy(item[k],palavra);
+        item[k]=(char *)malloc(strlen(palavra)*sizeof(char));
+        item[k] = palavra;
         while (palavra!=NULL){
             k++;
-            item[k]=(char *)malloc(21*sizeof(char));
-            strcpy(item[k],palavra);
+            item[k]=(char *)malloc(strlen(palavra)*sizeof(char));
+            item[k] = palavra;
             palavra = strtok(NULL, " ");
         }
         char *temp;
         for (int p=0; p<count; p++){
             for (int q=0; q<count; q++){
                 if(strcmp(item[q],item[q+1])>0){
-                    temp=item[q];
-                    item[q]=item[q+1];
-                    item[q+1]=temp;
+                    temp = item[q];
+                    item[q] = item[q+1];
+                    item[q+1] = temp;
                 }
             }
         }
@@ -47,9 +47,9 @@ int main() {
             }
         printf("%s\n", item[count]);
         
-        for (int m=0;m<count;m++){
+       for (int m=0;m<count;m++){
             free(item[m]);
-            }
+        }
     }
     return 0;
 }
