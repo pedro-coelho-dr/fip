@@ -1,66 +1,126 @@
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TRUE 1
+#define FALSE 0
 
-struct stackNode{
-	struct stackNode *next;
+//Prototypes
+struct node{
+	char *id;
+	struct node *next;
 };
-void push(struct stackNode **head, int a);
-int pop(struct stackNode **head);
-int isEmpty(struct stackNode *head);
+struct queue {
+    struct node *head;
+    struct node *tail;
+};
+void start(struct queue *q);
+int isEmpty(struct queue *q);
+void enqueue(struct queue *q, char *id);
+char *dequeue(struct queue *q);
 
-void push(struct stackNode **head, int a){ //push - inserindo novos elementos na pilha
+//Main
 
-  struct stackNode *novo = (struct stackNode *)malloc(sizeof(struct stackNode));
-    novo->next = *head;
-    *head = novo; //atualizando a cabeca da pilha
-}
-
-int pop(struct stackNode **head){ //removendo um elemento da pilha
-	struct stackNode *temp;
-	int var;
-	temp = *head;
-	var = (*head)->valor; //retornando o valor contindo na antiga pilha
-	*head = (*head)->next; //atualizando a cabeça da pilha para o proximo elemento
-	free(temp); //desalocando o espaco de memoria usado
-		
-	return var;
-}
-
-int isEmpty(struct stackNode *head){ //verifica se a pilha esta vazia
-	return head == NULL;
-}
-
-void finish(struct stackNode *head){
-    while(!empty(p)){
-        pop(p);
+int main() {
+    int choice;
+    char id[6];
+    struct queue L,N,S,O;
+    start(&L),start(&N),start(&S),start(&O);
+    while(TRUE){
+        scanf("%d",&choice);
+        if(choice == 0){
+            break;
+        }
+        scanf("%s",id);
+        char *id2 = (char*)malloc(sizeof(char)*6);
+        strcpy(id2,id);
+        switch(choice){
+            case -4:
+                enqueue(&L,id2);
+                break;
+            case -3:
+                enqueue(&N,id2);
+                break;
+            case -2:
+                enqueue(&S,id2);
+                break;
+            case -1:
+                enqueue(&O,id2);
+                break;
+            default:
+                break;
+        }
     }
-}
-
-
-int main(){
-    int i, tam;
-    struct pilha p;
-    char expressao[1001];
-
-    while(scanf("%s\n", &expressao) != EOF){
-        inicializa(&p);
-        tam = strlen(expressao);
-
-        for(i = 0; i < tam; ++i){
-            if(expressao[i] == '('){
-                push(&p, '(');
-            }else if(expressao[i] == ')'){
-                if(empty(&p))   break;
-                else            pop(&p);
+    int first=TRUE;
+    while (!isEmpty(&O) || !isEmpty(&N) || !isEmpty(&S) || !isEmpty(&L)) {
+        if (!isEmpty(&O)) {
+            if (first) {
+                printf("%s", dequeue(&O));
+                first = FALSE;
+            } else {
+                printf(" %s", dequeue(&O));
             }
         }
-
-        if(i == tam && empty(&p))   printf("correct\n");
-        else                        printf("incorrect\n");
-
-        destroi(&p);
+        if (!isEmpty(&N)) {
+            if (first) {
+                printf("%s", dequeue(&N));
+                first = FALSE;
+            } else {
+                printf(" %s", dequeue(&N));
+            }
+        }
+        if (!isEmpty(&S)) {
+            if (first) {
+                printf("%s", dequeue(&S));
+                first = FALSE;
+            } else {
+                printf(" %s", dequeue(&S));
+            }
+        }
+        if (!isEmpty(&L)) {
+            if (first) {
+                printf("%s", dequeue(&L));
+                first = FALSE;
+            } else {
+                printf(" %s", dequeue(&L));
+            }
+        }
     }
-
+    printf("\n");
     return 0;
+}
+
+//Functions
+
+void start(struct queue *q){
+    q->head = NULL;
+    q->tail = NULL;
+}
+
+int isEmpty(struct queue *q){
+    return (q->head == NULL);
+}
+
+void enqueue(struct queue *q, char *id){
+    struct node *novo = (struct node*)malloc(sizeof(struct node));
+    novo->id = id;
+    novo->next = NULL;
+
+    if (isEmpty(q)) {
+        q->head = novo;
+        q->tail = novo;
+    } else {
+        q->tail->next = novo;
+        q->tail = novo;
+    }
+}
+
+char *dequeue(struct queue *q){
+    if (isEmpty(q)) {
+        return NULL;
+    }
+    struct node *temp = q->head;
+    char *id = temp->id;
+    q->head = q->head->next;
+    free(temp);
+    return id;
 }
