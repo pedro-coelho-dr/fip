@@ -9,7 +9,7 @@ struct node{
 	char *id;
 	struct node *next;
 };
-struct queue {
+struct queue{
     struct node *head;
     struct node *tail;
 };
@@ -19,7 +19,6 @@ void enqueue(struct queue *q, char *id);
 char *dequeue(struct queue *q);
 
 //Main
-
 int main() {
     int choice;
     char id[6];
@@ -90,30 +89,25 @@ int main() {
 }
 
 //Functions
-
 void start(struct queue *q){
     q->head = NULL;
     q->tail = NULL;
 }
-
 int isEmpty(struct queue *q){
     return (q->head == NULL);
 }
-
 void enqueue(struct queue *q, char *id){
     struct node *novo = (struct node*)malloc(sizeof(struct node));
     novo->id = id;
     novo->next = NULL;
-
     if (isEmpty(q)) {
         q->head = novo;
         q->tail = novo;
-    } else {
+    }else{
         q->tail->next = novo;
         q->tail = novo;
     }
 }
-
 char *dequeue(struct queue *q){
     if (isEmpty(q)) {
         return NULL;
