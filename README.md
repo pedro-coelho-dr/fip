@@ -1,5 +1,5 @@
-# pif
-learning c (and a bit of haskell) 
+# fip
 
-functional and imperative programming
-part of my learning journey in computer science at cesar.school(https://cesar.school)
+learning functional and imperative programming, c and a bit of haskell 
+
+part of my learning journey in computer science at [cesar.school](https://cesar.school)
